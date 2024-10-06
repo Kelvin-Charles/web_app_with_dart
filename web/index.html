@@ -21,14 +21,105 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>Login Page</title>
+  <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="scaffolded-by" content="https://github.com/dart-lang/sdk">
+    <title>Try Web App</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="skyAnimate.css">
+    <script defer src="index.dart.js"></script>
 </head>
 <body>
-  <h1>Login</h1>
-  <input id="username" type="text" placeholder="Username">
-  <input id="password" type="password" placeholder="Password">
-  <button id="loginButton">Login</button>
-
+  <div class="night-sky">
+    <div class="moon"></div>
+    <div class="moon2"></div>
+    <!-- Multiple stars -->
+    <div class="star"></div>
+    <div class="star"></div>
+    <div class="star"></div>
+    <div class="star"></div>
+    <div class="star"></div>
+    <div class="star"></div>
+    <div class="star"></div>
+    <div class="star"></div>
+    <div class="star"></div>
+    <div class="star"></div>
+        <br>
+<br>
+    <div class="cont">
+        <div class="form sign-in">
+            <h2>Welcome</h2>
+            <label>
+                <span>Username</span>
+                <input type="text" class="username" name="username"/>
+            </label>
+            <label>
+                <span>Password</span>
+                <input type="password" class="passwors" name="password" />
+            </label>
+            <p class="forgot-pass">Forgot password?</p>
+            <input type="submit" class="loginButton"><font color="red">Sign In</font>
+         
+        </div>
+        <div class="sub-cont">
+            <div class="img">
+                <div class="img__text m--up">
+                 
+                    <h3>Don't have an account? Please Sign up!<h3>
+                </div>
+                <div class="img__text m--in">
+                
+                    <h3>If you already has an account, just sign in.<h3>
+                </div>
+                <div class="img__btn">
+                    <span class="m--up">Sign Up</span>
+                    <span class="loginButton">Sign In</span>
+                </div>
+            </div>
+          <div class="scrollable-container">
+            <div class="form sign-up">
+                <h2>Create your Account</h2>
+                <label>
+                    <span>First Name</span>
+                    <input type="text" id="cFirstName" name="createFirstName"/>
+                </label>
+                <label>
+                    <span>Last Name</span>
+                    <input type="text" id="cLastName" name="createLastName"/>
+                </label>
+                <label>
+                    <span>Email</span>
+                    <input type="email" id="cEmail" name="createEmail"/>
+                </label>
+                <label>
+                    <span>Username</span>
+                    <input type="text" id="cUsername" name="createUsername"/>
+                </label>
+                <label>
+                    <span>Password</span>
+                    <input type="password" id="cPassword" name="createPassword"/>
+                </label>
+                <label>
+                    <span>Verify Your Password</span>
+                    <input type="password" id="vpassword" name="verifiyPassword" />
+                </label>
+                <button type="button" class="submit">Sign Up</button>
+                
+            </div>
+          </div>
+        </div>
+        </div>
+        
+    </div>
+    
+    <script>
+        document.querySelector('.img__btn').addEventListener('click', function() {
+            document.querySelector('.cont').classList.toggle('s--signup');
+        });
+    </script>
+    </div>
+  </div>
   <script defer src="index.dart.js"></script>
 </body>
 </html>

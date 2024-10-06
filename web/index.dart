@@ -11,19 +11,23 @@ void main() {
     var password = passwordInput.value!;
 
     var url = 'http://localhost:8081/authenticate';
-   var response = await HttpRequest.request(
+    var response = await HttpRequest.request(
       url,
-  method: 'POST',
-  requestHeaders: {'Content-Type': 'application/json'},
-  sendData: json.encode({
-    'username': username,
-    'password': password,
-  }),
+      method: 'POST',
+      requestHeaders: {'Content-Type': 'application/json'},
+      sendData: json.encode({
+        'username': username,
+        'password': password,
+      }),
     );
 
     var result = jsonDecode(response.responseText!);
     if (result['status'] == 'success') {
-      window.alert('Login successful!');
+      var fName = result['userdata'][0].toString();
+      var lName = result['userdata'][1].toString();
+      // window.alert('Login successful!, ${result["userdata"]}');
+      querySelector("#mainWelcomePage");
+      querySelector('#displayUname')?.text = 'Welcome $fName $lName.';
     } else {
       window.alert('Login failed!');
     }

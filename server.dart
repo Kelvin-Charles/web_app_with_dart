@@ -11,7 +11,7 @@ final settings = ConnectionSettings(
   host: 'localhost',
   port: 3306,
   user: 'root',
-//   password: 'mimi',
+  // password: 'JustT3st1ng',
   db: 'try_web_app',
 );
 
@@ -31,10 +31,34 @@ Future<Response> authenticateUser(Request request) async {
     [username.toString(), password.toString()],
   );
 
-  await conn.close();
-
   if (result.isNotEmpty) {
-    return Response.ok(jsonEncode({'status': 'success'}));
+    var db_usernames = await conn.query("SELECT username FROM users");
+    var userList = [];
+    for (var user in db_usernames) {
+      userList.add(user.first.toString());
+    }
+    // for (var username in userList) {
+    //   username = username.toString();
+    var names = [];
+    var u_username;
+    if (userList.contains(username)) {
+      {
+        u_username = username;
+      }
+
+      var db_names = await conn
+          .query("select * from users where username=?", [u_username]);
+
+      await conn.close();
+
+      for (var name in db_names.toList()) {
+        names.add(name[1].toString());
+        names.add(name[2].toString());
+      }
+    }
+    // return Response.ok(body: jsonEncode({'message': 'User authenticated'}));
+    return Response.ok(jsonEncode({'status': 'success', "userdata": names}));
+    // return Response.ok([names,status]);
   } else {
     return Response.ok(jsonEncode({'status': 'failed'}));
   }
